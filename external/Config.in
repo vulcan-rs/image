@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_VULCAN_PATH/package/vulcan/Config.in"
