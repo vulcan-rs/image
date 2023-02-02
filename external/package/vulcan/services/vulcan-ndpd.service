@@ -1,0 +1,12 @@
+[Unit]
+Description=Vulcan NDP server to configure IPv6 clients in our network via RS/RA
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vulcan-ndpd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

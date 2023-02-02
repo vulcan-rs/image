@@ -1,0 +1,12 @@
+[Unit]
+Description=Vulcan DHCP server to configure DHCP clients in our network
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vulcan-dhcpd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
