@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PORTAL
+	bool "vulcan"
+	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+	select BR2_PACKAGE_HOST_RUSTC
+	help
+	  Portal is a DNS server written in pure Rust.
+
+	  https://github.com/portal-rs/portal

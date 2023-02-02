@@ -4,3 +4,6 @@
 [submodule "external/src/vulcan"]
 	path = external/src/vulcan
 	url = git@github.com:vulcan-rs/vulcan.git
+[submodule "external/src/portal"]
+	path = external/src/portal
+	url = https://github.com/portal-rs/portal
