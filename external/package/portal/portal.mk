@@ -27,7 +27,7 @@ define PORTAL_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/$(VULCAN_BIN_DIR)/gun $(TARGET_DIR)/usr/bin/gun
 endef
 
-define VULCAN_INSTALL_INIT_SYSTEMD
+define PORTAL_INSTALL_INIT_SYSTEMD
 	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/portal/portald.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/portald.service
 endef
