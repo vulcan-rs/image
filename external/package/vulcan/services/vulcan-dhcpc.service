@@ -1,0 +1,12 @@
+[Unit]
+Description=Vulcan DHCP client to retrieve IPv4 information
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vulcan-dhcpc
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

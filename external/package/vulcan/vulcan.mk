@@ -15,12 +15,23 @@ VULCAN_BIN_DIR = target/$(RUSTC_TARGET_NAME)/$(VULCAN_CARGO_MODE)
 
 define VULCAN_BUILD_CMDS
 	cd $(@D) && \
-	$(TARGET_MAKE_ENV) $(TARGET_CONFIGURE_OPTS) $(PKG_CARGO_ENV) $(VULCAN_CARGO_ENVIRONMENT) cargo build --$(VULCAN_CARGO_MODE) --target $(RUSTC_TARGET_NAME) -Z target-applies-to-host
+	$(TARGET_MAKE_ENV) $(TARGET_CONFIGURE_OPTS) $(PKG_CARGO_ENV) $(VULCAN_CARGO_ENVIRONMENT) cargo build \
+		--workspace \
+		--$(VULCAN_CARGO_MODE) \
+		--target $(RUSTC_TARGET_NAME) \
+		-Z target-applies-to-host
 endef
 
 define VULCAN_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/$(VULCAN_BIN_DIR)/vulcan-dhcpd $(TARGET_DIR)/usr/bin/vulcan-dhcpd
-	$(INSTALL) -m 0755 $(@D)/$(VULCAN_BIN_DIR)/vulcan-dhcp $(TARGET_DIR)/usr/bin/vulcan-dhcp
+	$(INSTALL) -m 0755 $(@D)/$(VULCAN_BIN_DIR)/vulcan-dhcpc $(TARGET_DIR)/usr/bin/vulcan-dhcpc
+endef
+
+define VULCAN_INSTALL_INIT_SYSTEMD
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/vulcan/services/vulcan-dhcpd.service \
+		$(TARGET_DIR)/usr/lib/systemd/system/vulcan-dhcpd.service
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/vulcan/services/vulcan-dhcpc.service \
+		$(TARGET_DIR)/usr/lib/systemd/system/vulcan-dhcpc.service
 endef
 
 $(eval $(cargo-package))
