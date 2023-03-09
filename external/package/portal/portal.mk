@@ -24,12 +24,17 @@ endef
 
 define PORTAL_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/$(VULCAN_BIN_DIR)/portald $(TARGET_DIR)/usr/bin/portald
-	$(INSTALL) -m 0755 $(@D)/$(VULCAN_BIN_DIR)/gun $(TARGET_DIR)/usr/bin/gun
+	$(INSTALL) -m 0755 $(@D)/$(VULCAN_BIN_DIR)/pgun $(TARGET_DIR)/usr/bin/pgun
 endef
 
 define PORTAL_INSTALL_INIT_SYSTEMD
 	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/portal/portald.service \
 		$(TARGET_DIR)/usr/lib/systemd/system/portald.service
+endef
+
+define PORTAL_INSTALL_CONFIG_FILE
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/portal/extra/config.toml \
+		$(TARGET_DIR)/etc/portald/config.toml
 endef
 
 $(eval $(cargo-package))
