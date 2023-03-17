@@ -36,10 +36,12 @@ define VULCAN_INSTALL_INIT_SYSTEMD
 endef
 
 define VULCAN_INSTALL_CONFIG_FILE
-	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/vulcan/extra/dhcpd.toml \
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/src/vulcan/extra/dhcpd.toml \
 		$(TARGET_DIR)/etc/vulcan/dhcpd.toml
-	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/vulcan/extra/dhcpc.toml \
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/src/vulcan/extra/dhcpc.toml \
 		$(TARGET_DIR)/etc/vulcan/dhcpc.toml
 endef
+
+VULCAN_POST_INSTALL_TARGET_HOOKS += VULCAN_INSTALL_CONFIG_FILE
 
 $(eval $(cargo-package))

@@ -33,8 +33,10 @@ define PORTAL_INSTALL_INIT_SYSTEMD
 endef
 
 define PORTAL_INSTALL_CONFIG_FILE
-	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/package/portal/extra/config.toml \
+	$(INSTALL) -D -m 644 $(BR2_EXTERNAL_VULCAN_PATH)/src/portal/extra/config.toml \
 		$(TARGET_DIR)/etc/portald/config.toml
 endef
+
+PORTAL_POST_INSTALL_TARGET_HOOKS += PORTAL_INSTALL_CONFIG_FILE
 
 $(eval $(cargo-package))
