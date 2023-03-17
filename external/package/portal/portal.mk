@@ -5,7 +5,7 @@
 ################################################################################
 
 PORTAL_VERSION = 0.0.1
-PORTAL_SITE = $(BR2_EXTERNAL_VULCAN_PATH)/src/vulcan
+PORTAL_SITE = $(BR2_EXTERNAL_VULCAN_PATH)/src/portal
 PORTAL_SITE_METHOD = local
 PORTAL_LICENSE = GPL-3.0+
 PORTAL_LICENSE_FILES = LICENSE
@@ -13,7 +13,7 @@ PORTAL_LICENSE_FILES = LICENSE
 PORTAL_CARGO_MODE = release
 PORTAL_BIN_DIR = target/$(RUSTC_TARGET_NAME)/$(PORTAL_CARGO_MODE)
 
-define VULCAN_BUILD_CMDS
+define PORTAL_BUILD_CMDS
 	cd $(@D) && \
 	$(TARGET_MAKE_ENV) $(TARGET_CONFIGURE_OPTS) $(PKG_CARGO_ENV) $(PORTAL_CARGO_ENVIRONMENT) cargo build \
 		--workspace \

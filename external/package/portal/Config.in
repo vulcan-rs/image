@@ -1,5 +1,5 @@
 config BR2_PACKAGE_PORTAL
-	bool "vulcan"
+	bool "portal"
 	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
 	select BR2_PACKAGE_HOST_RUSTC
 	help
