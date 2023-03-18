@@ -19,7 +19,8 @@ define VULCAN_BUILD_CMDS
 		--workspace \
 		--$(VULCAN_CARGO_MODE) \
 		--target $(RUSTC_TARGET_NAME) \
-		-Z target-applies-to-host
+		-Z target-applies-to-host \
+		-Z sparse-registry
 endef
 
 define VULCAN_INSTALL_TARGET_CMDS

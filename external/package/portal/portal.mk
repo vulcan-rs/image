@@ -19,7 +19,8 @@ define PORTAL_BUILD_CMDS
 		--workspace \
 		--$(PORTAL_CARGO_MODE) \
 		--target $(RUSTC_TARGET_NAME) \
-		-Z target-applies-to-host
+		-Z target-applies-to-host \
+		-Z sparse-registry
 endef
 
 define PORTAL_INSTALL_TARGET_CMDS

@@ -1,4 +1,5 @@
 BR2_x86_64=y
+BR2_CPAN_MIRROR="http://cpan.metacpan.org"
 BR2_CCACHE=y
 BR2_TARGET_GENERIC_HOSTNAME="vulcan"
 BR2_TARGET_GENERIC_ISSUE="Welcome to Vulcan"
